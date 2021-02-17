@@ -7,9 +7,9 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 2) Spend points(starting with the oldest transactions) and return a list of { "payer": <string>, "points": <integer> } for each call.
 3) Return all payer point balances.
 
-*
-*
-*
+|
+|
+|
 
 **#Instructions**
 - import this repository into your account/clone a copy or download a zip file.
@@ -17,9 +17,9 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 - type **'npm install'** to download all dependencies.
 - To start the server, type **'npm start'**.<br/>
 
-*
-*
-*
+|
+|
+|
 
 
 
@@ -41,9 +41,9 @@ Returns an array of objects that contain payer and the amount of points spent .
 | GET    | '/points-balance'             
 Returns an object that contain payer and the amount of points left.
 
-*
-*
-*
+|
+|
+|
 
 **#Database helper functions**
 
@@ -67,9 +67,9 @@ an array containing all the payers and the amount spent will be returned.
 
 -*add()* - Adds a new transaction object to the database.
 
-*
-*
-*
+|
+|
+|
 
 
 **#Transaction table Schema**
@@ -85,9 +85,9 @@ an array containing all the payers and the amount spent will be returned.
     "timestamp": "string containing the time transaction was created",
 }
 
-*
-*
-*
+|
+|
+|
 
 
 **#Seed Data**
