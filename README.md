@@ -7,11 +7,15 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 2) Spend points(starting with the oldest transactions) and return a list of { "payer": <string>, "points": <integer> } for each call.
 3) Return all payer point balances.
 
+
+
 **#Instructions**
 - import this repository into your account/clone a copy or download a zip file.
 - CD into the main folder.
 - type **'npm install'** to download all dependencies.
 - To start the server, type **'npm start'**.
+
+
 
 
 
@@ -32,6 +36,8 @@ Returns an array of objects that contain payer and the amount of points spent .
 
 | GET    | '/points-balance'             
 Returns an object that contain payer and the amount of points left.
+
+
 
 **#Database helper functions**
 
@@ -56,9 +62,12 @@ an array containing all the payers and the amount spent will be returned.
 -*add()* - Adds a new transaction object to the database.
 
 
+
+
 **#Transaction table Schema**
 
 {
+    
     "id: : "transaction id",
     
     "payer": "payer name for this transaction",
@@ -69,14 +78,21 @@ an array containing all the payers and the amount spent will be returned.
 }
 
 
+
+
 **#Seed Data**
 This populates the database with dummy data
 
 [
-        { "payer": "DANNON", "points": 1000, "timestamp": "2020-11-02T14:00:00Z" }
-        { "payer": "UNILEVER", "points": 200, "timestamp": "2020-10-31T11:00:00Z" }
-        { "payer": "DANNON", "points": -200, "timestamp": "2020-10-31T15:00:00Z" }
-        { "payer": "MILLER COORS", "points": 10000, "timestamp": "2020-11-01T14:00:00Z" }
+        
+        { "payer": "DANNON", "points": 1000, "timestamp": "2020-11-02T14:00:00Z" },
+        
+        { "payer": "UNILEVER", "points": 200, "timestamp": "2020-10-31T11:00:00Z" },
+        
+        { "payer": "DANNON", "points": -200, "timestamp": "2020-10-31T15:00:00Z" },
+        
+        { "payer": "MILLER COORS", "points": 10000, "timestamp": "2020-11-01T14:00:00Z" },
+        
         { "payer": "DANNON", "points": 300, "timestamp": "2020-10-31T10:00:00Z" }
 ]
 
