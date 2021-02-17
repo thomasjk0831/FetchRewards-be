@@ -39,7 +39,7 @@ example: { "points": 1000}
 Returns an array of objects that contain payer and the amount of points spent .
 
 | GET    | '/points-balance'             
-Returns an object that contain payer and the amount of points left.
+Returns an object that contain payer and the amount of points left.\
 
 |
 |
