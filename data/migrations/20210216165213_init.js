@@ -4,11 +4,10 @@ exports.up = function (knex) {
         .createTable("users", tbl => {
             tbl.increments()
             tbl.string("username")
-            tbl.integer("points").defaultTo(0)
         })
         .createTable("transactions", tbl => {
             tbl.increments()
-            tbl.string("payer").unique().notNullable()
+            tbl.string("payer").notNullable()
             tbl.integer("points").notNullable()
             tbl.string("timestamp")
             tbl.integer("user_id")
