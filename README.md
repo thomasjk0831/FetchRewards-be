@@ -12,7 +12,8 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 - CD into the main folder
 - type **'npm install'** to download all dependencies
 - To start the server, type **'npm start'**
-
+<br />
+<br />
 
 
 **#EndPoints**
@@ -31,8 +32,8 @@ Returns an array of objects that contain payer and the amount of points spent
 
 | GET    | '/points-balance'             
 Returns an object that contain payer and the amount of points left
-
-
+<br />
+<br />
 **#Database helper functions**
 
 database access will be used using 'connection.js' file in the data folder.
@@ -54,7 +55,8 @@ an array containing all the payers and the amount spent will be returned.
 *findByID()* - returns a transaction by its ID
 
 *add()* - Adds a new transaction object to the database.
-
+<br />
+<br />
 
 **#Transaction table Schema**
 
@@ -64,7 +66,8 @@ an array containing all the payers and the amount spent will be returned.
     "points": "points for this transaction",
     "timestamp": "string containing the time transaction was created"
 }
-
+<br />
+<br />
 
 **#Seed Data**
 This populates the database with dummy data
