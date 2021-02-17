@@ -8,15 +8,13 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 3) Return all payer point balances.
 
 **#Instructions**
-
-**#Project Setup**
 - import this repository into your account/clone a copy or download a zip file
 - CD into the main folder
 - type **'npm install'** to download all dependencies
 - To start the server, type **'npm start'**
+- 
 
 **#EndPoints**
-
 | GET    | '/'             
 Returns an array of all the transaction objects contained in the database.    
 
@@ -36,7 +34,41 @@ Returns an object that contain payer and the amount of points left
 
 **#Database helper functions**
 
-database access will 
+database access will be used using 'connection.js' file in the data folder.
+
+functions are defined in 'transactions-model.js' file
+
+*findall()* - returns all transactions in the database
+
+*updatePoints(id, updatedPoints)* - updates the points field in the transaction objects in the databse.
+It requires 2 parameters: id(this is the transaction id) and updatedPoints(this is the new updated points amount)
+
+*spend(points)* - Updates the points field in the transaction objects in the databse. The function will keep updating
+until 'points' argument is fully spent. If there are no transactions at all, an error message will be returned.
+If there are insufficient amount of points, an error message will be spend. If all the points are successfully spent,
+an array containing all the payers and the amount spent will be returned.
+
+*findPointsBalance()* - queries the database and returns an object with payer and points left information
+
+*findByID()* - returns a transaction by its ID
+
+*add()* - Adds a new transaction object to the database.
+
+
+**#Transaction table Schema**
+
+{
+    "id: : "transaction id",
+    "payer": "payer name for this transaction",
+    "points": "points for this transaction",
+    "timestamp": "string containing the time transaction was created"
+}
+
+
+
+
+
+
 
 
 
