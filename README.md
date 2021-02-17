@@ -21,20 +21,20 @@ ________________________________________________________________________________
 
 **#EndPoints**
 
-| GET    | '/'             
+| GET    | '/api/transactions'             
 Returns an array of all the transaction objects contained in the database.    
 
-| POST    | '/'             
+| POST    | '/api/transactions'             
 Adds a transaction object in the database. Required fields are "payer" and "points". 
 example: { "payer": "DANNON", "points": 1000}
 Returns the created object that is now stored in the database.
 
-| PUT    | '/spend'             
+| PUT    | '/api/transactions/spend'             
 Updates("spends") the transaction points in the database. Required field is "points". 
 example: { "points": 1000}
 Returns an array of objects that contain payer and the amount of points spent .
 
-| GET    | '/points-balance'             
+| GET    | '/api/transactions/points-balance'             
 Returns an object that contain payer and the amount of points left.
 
 _____________________________________________________________________________________
