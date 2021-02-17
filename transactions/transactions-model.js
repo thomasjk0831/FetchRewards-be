@@ -13,21 +13,28 @@ function findAll() {
 }
 
 //update points in the database
+//helper function
 async function updatePoints(id, updatedPoints) {
     await db('transactions').update({ points: updatedPoints }).where({ id })
 }
 
 //pass points as argument
-async function spend() {
+async function spend(points) {
     try {
-        let points = 5000
+
         let i = 0
-        let temp = await db('transactions')
+        //using an object to store points spent. This allows for O(n) complexity
         let response = {}
+
+        //sorting array by oldest date as we need to spend those points first
+        let temp = await db('transactions')
         temp.sort(function (a, b) {
             return a.timestamp.localeCompare(b.timestamp);
         });
+
+        //keep iterating while points are left to spend
         while (points > 0) {
+            //if all the payer's points in the transaction will be spent
             if (points - temp[i].points >= 0) {
                 points -= temp[i].points
                 if (temp[i].payer in response) {
@@ -38,6 +45,7 @@ async function spend() {
                 }
                 temp[i].points = 0
             }
+            //if there are surplus payer's points in the transaction
             else {
                 temp[i].points -= points
                 if (temp[i].payer in response) {

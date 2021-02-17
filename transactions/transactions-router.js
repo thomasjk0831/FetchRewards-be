@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         })
 })
 
+//get all payer points-balance
 router.get('/points-balance', (req, res) => {
     Transactions.findPointsBalance()
         .then(balance => {
@@ -24,8 +25,12 @@ router.get('/points-balance', (req, res) => {
         })
 })
 
+//spend user's points starting with the oldest date
 router.put('/spend', (req, res) => {
-    Transactions.spend()
+    if (!req.body.points) {
+        res.json({ msg: "points is a required filed" })
+    }
+    Transactions.spend(req.body.points)
         .then(s => {
             res.status(200).json(s)
         })
