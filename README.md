@@ -16,7 +16,7 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 <br />
 
 
-**#EndPoints**
+**#EndPoints#**
 | GET    | '/'             
 Returns an array of all the transaction objects contained in the database.    
 
