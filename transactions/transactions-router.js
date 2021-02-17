@@ -14,6 +14,26 @@ router.get('/', (req, res) => {
         })
 })
 
+router.get('/points-balance', (req, res) => {
+    Transactions.findPointsBalance()
+        .then(balance => {
+            res.status(200).json(balance)
+        })
+        .catch(err => {
+            res.status(400).json({ msg: err })
+        })
+})
+
+router.put('/spend', (req, res) => {
+    Transactions.spend()
+        .then(s => {
+            res.status(200).json(s)
+        })
+        .catch(err => {
+            res.status(400).json({ msg: err })
+        })
+})
+
 //post transactions
 //payer, points and user_id are required
 router.post('/', (req, res) => {
