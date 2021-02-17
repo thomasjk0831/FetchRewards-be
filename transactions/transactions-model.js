@@ -18,16 +18,31 @@ async function updatePoints(id, updatedPoints) {
     await db('transactions').update({ points: updatedPoints }).where({ id })
 }
 
-//pass points as argument
+//pass points as argument. updates the transactions database table with new points.
+//returns array with points spent per payer
 async function spend(points) {
     try {
 
         let i = 0
         //using an object to store points spent. This allows for O(n) complexity
         let response = {}
+        //create a temp array from transactions table
+        let temp = await db('transactions')
+
+        //deal with some edge cases
+        //if there are no transactions yet posted
+        if (temp.length === 0)
+            return "No transactions for user"
+
+        //check if user has enough points to spend. if not send message    
+        const pointsTotal = temp.reduce((accumulator, current) => {
+            return accumulator + current.points
+        }, 0)
+
+        if (pointsTotal < points)
+            return `You only have ${pointsTotal} points left to spend`
 
         //sorting array by oldest date as we need to spend those points first
-        let temp = await db('transactions')
         temp.sort(function (a, b) {
             return a.timestamp.localeCompare(b.timestamp);
         });
@@ -46,6 +61,7 @@ async function spend(points) {
                 temp[i].points = 0
             }
             //if there are surplus payer's points in the transaction
+
             else {
                 temp[i].points -= points
                 if (temp[i].payer in response) {
@@ -61,8 +77,10 @@ async function spend(points) {
 
         //to convert the reponse object into a response array as per requirements
         let arrResponse = []
-        for (x in response)
-            arrResponse.push({ "payer": x, "points": -response[x] })
+        for (x in response) {
+            if (response[x] !== 0)
+                arrResponse.push({ "payer": x, "points": -response[x] })
+        }
 
         //update database with updated points from the sorted temp array
         for (let i = 0; i < temp.length; i++) {
