@@ -13,7 +13,7 @@ Use `Node.js` and `Express` to build an API that performs operations on `transac
 - import this repository into your account/clone a copy or download a zip file.
 - CD into the main folder.
 - type **'npm install'** to download all dependencies.
-- To start the server, type **'npm start'**.
+- To start the server, type **'npm start'**.<br/>
 
 
 
